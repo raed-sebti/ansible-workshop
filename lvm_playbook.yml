@@ -1,0 +1,6 @@
+---
+- name: ansible workshop 
+  hosts: serverd
+  roles: 
+  - name: lvm
+...

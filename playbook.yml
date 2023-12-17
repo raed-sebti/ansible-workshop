@@ -3,10 +3,10 @@
   hosts: CHANGE-ME 
   roles: 
   - ntpd
-  - lvm 
+  #- lvm 
   - nfs 
   - selinux 
-  - firewall
+  #- firewall
   - vhost 
   - ssl
   - rsyslog  

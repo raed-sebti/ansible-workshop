@@ -1,0 +1,39 @@
+---
+# tasks file for lvm
+
+- name: Create partition 
+  parted: 
+    device: /dev/sdb 
+    number: 1 
+    flags: [ lvm ]
+    state: present 
+    part_end: 3GB 
+
+- name: Create volume group 
+  lvg: 
+    vg:   ansible_vg
+    pvs:  /dev/sdb1
+    pesize: 4  
+- name: Create logical volume 
+  lvol:
+    vg: ansible_vg 
+    lv: ansible_lvm
+    size: 1g
+    force: yes 
+- name: Format the LVM with XFS file system 
+  filesystem: 
+    fstype: xfs 
+    dev:   /dev/ansible_vg/ansible_lvm 
+- name: create the mount point 
+  file: 
+    path: /ansible_lvm  
+    state: directory 
+    mode:  0755
+- name: mount the LV on /ansible_lvm 
+  mount: 
+    path: /ansible_lvm
+    src: /dev/ansible_vg/ansible_lvm 
+    fstype: xfs 
+    state: mounted 
+
+

@@ -8,6 +8,4 @@ packages:
 services:
 - {name: rsyslog,     state: started, enabled: true }
 type: server
-
-
 ...

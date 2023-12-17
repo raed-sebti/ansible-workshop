@@ -8,7 +8,6 @@ lv_size: 1g
 pv: /dev/sdb1 
 mounted: true 
 mount_point: /ansible_lvm 
-
 type: client
 rsyslog_server: servera
 packages:

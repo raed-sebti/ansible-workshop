@@ -1,0 +1,16 @@
+---
+- name: create a shared dir
+  file:
+    path:   "{{ mount_point  }}" 
+    state:  directory 
+    setype: nfs_t 
+    owner:  root 
+    group:  root 
+- name: mount nfs server
+  mount: 
+    src:  serverd:{{ shared_path }}
+    path: "{{ mount_point }}"
+    opts:  defaults
+    fstype:  nfs
+    state:  mounted
+...

@@ -1,0 +1,6 @@
+---
+- name: ansible workshop 
+  hosts: all
+  roles: 
+  - name: nfs
+...

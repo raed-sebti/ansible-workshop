@@ -1,0 +1,18 @@
+---
+- name: Block for nfs servers 
+  block: 
+  - name: Manage nfs service
+    include: tasks/manage-service.yml 
+  - name: Manage nfs_server file 
+    include: tasks/nfs_server.yml 
+  when: type == "server" 
+- name: Block for nfs clients 
+  block: 
+  - name: Manage nfs service
+    include: tasks/manage-service.yml 
+  - name: Manage nfs-server file 
+    include: tasks/nfs_client.yml 
+  when: type == "client"
+
+
+  

@@ -1,0 +1,18 @@
+---
+- name: create a shared dir
+  file:
+    path:   "{{ shared_path }}" 
+    state:  directory 
+    mode:   3755 
+    setype: nfs_t 
+    owner:  root 
+    group:  root 
+- name: export {{ shared_path }}
+  copy:
+    content: |
+      "{{ shared_path }}"  *(rw)      
+    dest: /etc/exports 
+- name: exportfs 
+  command:  exportfs -rv   
+
+...

@@ -1,0 +1,25 @@
+---
+packages:
+- name: nfs-utils 
+  state: latest 
+- name: autofs 
+  state: latest 
+services:
+- name: autofs
+  state: started
+  enabled: true 
+- name: nfs-server
+  state: started
+  enabled: true 
+- name: firewalld
+  state: started
+  enabled: true 
+rules:
+- service:   nfs
+  state:     enabled
+  immediate: true
+  permanent: true
+shared_path: /shared
+mount_point: /nfs_mp
+
+...

@@ -4,10 +4,10 @@
   roles: 
   - ntpd
   #- lvm 
-  - nfs 
+  #- nfs 
   - selinux 
   #- firewall
-  - vhost 
+  #- vhost 
   - ssl
   #- rsyslog  
   - haproxy 

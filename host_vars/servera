@@ -3,9 +3,6 @@ fwd_services:
 - {service: nfs, immediate: true, permanent: true, state: enabled} 
 fwd_ports:  
 - {port: 32500, protocol: udp, immediate: true, permanent: true, state: enabled} 
-packages:
-- {name: rsyslog,     state: latest }
-services:
-- {name: rsyslog,     state: started, enabled: true }
-type: server
+type: client
+mount_point: /app1
 ...

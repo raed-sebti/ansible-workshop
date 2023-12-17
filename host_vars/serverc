@@ -1,6 +1,3 @@
 rsyslog_server: servera
-packages:
-- {name: rsyslog,     state: latest }
-services:
-- {name: rsyslog,     state: started, enabled: true }
 type: client
+mount_point: /app1

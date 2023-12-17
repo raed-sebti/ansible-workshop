@@ -9,16 +9,15 @@
     setype:   httpd_sys_content_t 
   with_items: 
   - "{{ common_vhosts }}"
-  - "{{ custom_vhosts }}"
   tags: 
   - dr
+  when: false
 - name: Generate configuration files for vhosts 
   template: 
     src: templates/httpd-vhosts.j2 
     dest: /etc/httpd/conf.d/{{ item.name }}.conf 
   with_items: 
   - "{{ common_vhosts }}"
-  - "{{ custom_vhosts }}"
   notify: 
   - restart_httpd
 
@@ -30,7 +29,6 @@
     setype:   httpd_sys_content_t 
   with_items: 
   - "{{ common_vhosts }}"
-  - "{{ custom_vhosts }}"
 - name:  enable firewalld ports 
   firewalld : 
     port: "{{ item.apache_port }}/tcp"
@@ -39,6 +37,5 @@
     permanent: true
   with_items: 
   - "{{ common_vhosts }}"
-  - "{{ custom_vhosts }}"
 
 ...

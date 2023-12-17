@@ -1,0 +1,9 @@
+common_vhosts:
+- {name: app1, document_root: /app1, apache_port: 51000 }
+packages:
+- {name: rsyslog,     state: latest }
+- {name: httpd,       state: latest }
+services:
+- {name: rsyslog,     state: started, enabled: true }
+- {name: httpd,     state: started, enabled: true }
+

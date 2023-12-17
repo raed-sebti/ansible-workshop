@@ -20,6 +20,5 @@ rules:
   immediate: true
   permanent: true
 shared_path: /shared
-mount_point: /nfs_mp
 
 ...

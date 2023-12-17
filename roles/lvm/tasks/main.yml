@@ -8,33 +8,38 @@
     flags: [ lvm ]
     state: present 
     part_end: "{{ part_size }}" 
+  when: lv_name is defined 
 
 - name: Create volume group 
   lvg: 
     vg:    "{{ vg_name }}"
     pvs:   "{{ pv      }}"
     pesize: 4  
+  when: lv_name is defined 
 - name: Create logical volume 
   lvol:
     vg: "{{ vg_name }}"  
     lv: "{{ lv_name }}"
     size: "{{ lv_size }}"
     force: yes 
+  when: lv_name is defined 
 - name: Format the LVM with XFS file system 
   filesystem: 
     fstype: xfs 
     dev:   /dev/{{ vg_name }}/{{ lv_name }} 
+  when: lv_name is defined 
 - name: create the mount point 
   file: 
     path: "{{ mount_point }}"  
     state: directory 
     mode:  0755
+  when: lv_name is defined 
 - name: mount the LV on /ansible_lvm 
   mount: 
     path: "{{ mount_point }}"
     src: /dev/{{ vg_name }}/{{ lv_name }} 
     fstype: xfs 
     state: mounted 
-  when: mounted 
+  when: mounted and lv_name is defined 
 
 

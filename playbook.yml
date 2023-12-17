@@ -1,7 +1,12 @@
 ---
 - name: ansible workshop 
-  hosts: CHANGE-ME 
+  hosts: all
   roles: 
+  - name: lvm
+  - name: nfs 
+  - name: vhost 
+  - name: rsyslog
+
   - ntpd
   #- lvm 
   #- nfs 

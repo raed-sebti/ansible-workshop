@@ -7,10 +7,10 @@ lv_name: ansible_lvm
 lv_size: 1g
 pv: /dev/sdb1 
 mounted: true 
-mount_point: /ansible_lvm 
-type: client
+mount_point: /shared 
+
+type: server
+shared_path: /shared
+
 rsyslog_server: servera
-packages:
-- {name: rsyslog,     state: latest }
-services:
-- {name: rsyslog,     state: started, enabled: true }
+

@@ -1,0 +1,9 @@
+---
+- name: ansible workshop 
+  hosts: all
+  roles: 
+  #- name: lvm
+  #- name: nfs 
+  - name: vhost 
+  #- name: rsyslog
+...

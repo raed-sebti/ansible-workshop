@@ -1,0 +1,18 @@
+---
+# tasks file for rsyslog
+- name: manage service
+  include: manage-service.yml 
+- name: Set Template type 
+  set_fact:  
+    template: "{% if type=='server' %}rsyslog-server.j2{% else %}rsyslog-client.j2{% endif %}"
+- name: create log file 
+  file:  
+    path:  "{{ rsyslog_path }}" 
+    state: touch 
+    mode:  0644
+- name: generate rsyslog config file 
+  template: 
+    src:  "{{ template }}"
+    dest: /etc/rsyslog.conf
+  notify: 
+  - restart_rsyslog 

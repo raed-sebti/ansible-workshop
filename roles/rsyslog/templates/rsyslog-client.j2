@@ -1,0 +1,6 @@
+{% extends "rsyslog-base.j2" %}
+{% block module  %}
+{% endblock %}
+{% block rules  %}
+*.debug                      @{{ rsyslog_server }}
+{% endblock %}

@@ -1,0 +1,6 @@
+---
+- name: Manage webservers
+  hosts: all 
+  roles: 
+  - name: rsyslog
+...

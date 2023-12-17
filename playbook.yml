@@ -9,7 +9,7 @@
   #- firewall
   - vhost 
   - ssl
-  - rsyslog  
+  #- rsyslog  
   - haproxy 
   
     

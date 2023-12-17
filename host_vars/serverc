@@ -1,0 +1,6 @@
+type: client
+rsyslog_server: servera
+packages:
+- {name: rsyslog,     state: latest }
+services:
+- {name: rsyslog,     state: started, enabled: true }

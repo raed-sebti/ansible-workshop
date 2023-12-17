@@ -1,0 +1,17 @@
+---
+- name: ansible workshop 
+  hosts: CHANGE-ME 
+  roles: 
+  - ntpd
+  - lvm 
+  - nfs 
+  - selinux 
+  - firewall
+  - vhost 
+  - ssl
+  - rsyslog  
+  - haproxy 
+  
+    
+    
+

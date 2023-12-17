@@ -1,0 +1,6 @@
+---
+- name: ansible workshop 
+  hosts: servera
+  roles: 
+  - name: firewall
+...

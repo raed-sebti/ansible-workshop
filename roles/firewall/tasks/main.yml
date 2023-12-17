@@ -1,0 +1,20 @@
+---
+# tasks file for firewall
+
+- name: Manage services 
+  firewalld:
+    service:   "{{ item.service   }}" 
+    state:     "{{ item.state     }}"
+    immediate: "{{ item.immediate }}"
+    permanent: "{{ item.permanent }}"
+  loop:        "{{ fwd_services   }}"
+  when: fwd_services is defined
+- name: Manage ports
+  firewalld:
+    port:      "{{ item.port      }}/{{ item.protocol }}" 
+    state:     "{{ item.state     }}"
+    immediate: "{{ item.immediate }}"
+    permanent: "{{ item.permanent }}"
+  loop:        "{{ fwd_ports      }}"
+  when: fwd_ports is defined
+...

@@ -1,0 +1,6 @@
+---
+fwd_services: 
+- {service: nfs, immediate: true, permanent: true, state: enabled} 
+fwd_ports:  
+- {port: 32500, protocol: udp, immediate: true, permanent: true, state: enabled} 
+...

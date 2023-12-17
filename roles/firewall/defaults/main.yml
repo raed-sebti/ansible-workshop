@@ -1,0 +1,6 @@
+---
+# defaults file for firewall
+fwd_services:
+- {service: ssh, immediate: true, permanent: true, state: enabled} 
+fwd_ports:
+- {port: 22, protocol: tcp, immediate: true, permanent: true, state: enabled} 

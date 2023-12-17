@@ -1,2 +1,12 @@
 ---
 # defaults file for lvm
+
+disk: /dev/sdb
+part_size: 3GB 
+vg_name: ansible_vg 
+lv_name: ansible_lvm 
+lv_size: 1g
+pv: /dev/sdb1 
+mounted: true 
+mount_point: /ansible_lvm 
+

@@ -3,37 +3,38 @@
 
 - name: Create partition 
   parted: 
-    device: /dev/sdb 
+    device: "{{ disk  }}" 
     number: 1 
     flags: [ lvm ]
     state: present 
-    part_end: 3GB 
+    part_end: "{{ part_size }}" 
 
 - name: Create volume group 
   lvg: 
-    vg:   ansible_vg
-    pvs:  /dev/sdb1
+    vg:    "{{ vg_name }}"
+    pvs:   "{{ pv      }}"
     pesize: 4  
 - name: Create logical volume 
   lvol:
-    vg: ansible_vg 
-    lv: ansible_lvm
-    size: 1g
+    vg: "{{ vg_name }}"  
+    lv: "{{ lv_name }}"
+    size: "{{ lv_size }}"
     force: yes 
 - name: Format the LVM with XFS file system 
   filesystem: 
     fstype: xfs 
-    dev:   /dev/ansible_vg/ansible_lvm 
+    dev:   /dev/{{ vg_name }}/{{ lv_name }} 
 - name: create the mount point 
   file: 
-    path: /ansible_lvm  
+    path: "{{ mount_point }}"  
     state: directory 
     mode:  0755
 - name: mount the LV on /ansible_lvm 
   mount: 
-    path: /ansible_lvm
-    src: /dev/ansible_vg/ansible_lvm 
+    path: "{{ mount_point }}"
+    src: /dev/{{ vg_name }}/{{ lv_name }} 
     fstype: xfs 
     state: mounted 
+  when: mounted 
 
 
